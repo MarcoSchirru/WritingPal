@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href='style.css'  media="screen">
+    <link rel="stylesheet" href="printZeitPlan.css" media="print">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    
+    <title>Zeitplan</title>
+</head>
+
+<body>
+<nav>
+    <ul>
+      <li><a href='index.html'>Start</a></li>
+      <li><a href='test.html'>Test</a></li>
+      <li><a  class='active' href='zeitplan.html'>Zeitplan</a></li>
+      <li><a href='tooltips.html'>Tooltips</a></li>
+      <li style='float:right'><a href='profil.html'>Profil</a></li>
+      <li style='float:right'><a href='login.html'>Login</a></li>
+  </ul>
+</nav>
+
+
+  <div class='div1'>
+      <!-- Eingabe -->
+      <form id="abgabe">
+          <label>
+              Abgabedatum:
+              <input id='dAbgabe' type='date'><br><br>
+          </label>
+      </form>
+      <button id='zeitplanGenerieren'>Zeitplan erstellen</button>
+      <!-- Tabellenausgabe -->
+      <table id='zeitplan'></table>
+  
+  </div>
+
+    <div id ='checkList'>
+          <h2>Schrittanleitung</h2>
+            <form>
+              <div id='check1'>
+              <h2>Planen und Abstimmen</h2>
+                <input type="checkbox" id="check1.1" name="check1">
+                <label for="check1.1">1. Thema finden</label><br>
+                <input type="checkbox" id="check1.2" name="check1">
+                <label for="check1.2">2. Sich einlesen / erste Recherchen</label><br>
+                <input type="checkbox" id="check1.3" name="check1">
+                <label for="check1.3">3. Thema eingrenzen</label><br>
+                <input type="checkbox" id="check1.4" name="check1">
+                <label for="check1.4">4. Fragestellung, These und Zielsetzung festlegen</label><br>
+                <input type="checkbox" id="check1.5" name="check1">
+                <label for="check1.5">5. Methode festlegen / klären</label><br>
+                <input type="checkbox" id="check1.6" name="check1">
+                <label for="check1.6">6. Rahmen klären - Umfang, Termine und Qualität</label><br>
+              </div>
+              <div id="check2">
+                <h2>Material sammeln Daten erheben</h2>
+                <input type="checkbox" id="check2.1" name="check2">
+                <label for="check2.1">1. Systematisch recherchieren</label><br>
+                <input type="checkbox" id="check2.2" name="check2">
+                <label for="check2.2">2. Lesen und exzerpieren</label><br>
+                <input type="checkbox" id="check2.3" name="check2">
+                <label for="check2.3">3. Material sammeln/ Daten erheben</label><br>
+                <input type="checkbox" id="check2.4" name="check2">
+                <label for="check2.4">4. Daten verarbeiten/ strukturieren/ visualisieren</label><br>
+                <input type="checkbox" id="check2.5" name="check2">
+                <label for="check2.5">5. Gliederung festlegen</label><br>
+              </div>
+              <div id="check3">
+                <h2>Arbeiten am Text und Überarbeiten</h2>
+                <input type="checkbox" id="check3.1" name="check3">
+                <label for="check3.1">1. Inhaltliche Überarbeitung</label><br>
+                <input type="checkbox" id="check3.2" name="check3">
+                <label for="check3.2">2. Feedback einholen</label><br>
+                <input type="checkbox" id="check3.3" name="check3">
+                <label for="check3.3">3. Sprachliche Überarbeitung</label><br>
+                <input type="checkbox" id="check3.4" name="check3">
+                <label for="check3.4">4. Layout gestalten</label><br>
+                <input type="checkbox" id="check3.5" name="check3">
+                <label for="check3.5">5. Korrektur lesen</label><br>
+              </div>
+              <div id="check4">
+                <h2>Abschließen und Publizieren</h2>
+                <input type="checkbox" id="check4.1" name="check4">
+                <label for="check4.1">1. Formatieren/ editieren</label><br>
+                <input type="checkbox" id="check4.2" name="check4">
+                <label for="check4.2">2. Abschießen und loslassen</label><br>
+                <input type="checkbox" id="check4.3" name="check4">
+                <label for="check4.3">3. Peer Review</label><br>
+                <input type="checkbox" id="check4.4" name="check4">
+                <label for="check4.4">4. Begutachtung/ Benotung</label><br>
+                <input type="checkbox" id="check4.5" name="check4">
+                <label for="check4.5">5. Reaktionen/ Feedback</label><br>
+              </div>
+            </form>
+        </div>
+      
+
+<script>
+    const todayDate =new Date();
+    //-- Ausgabe des Zeitplans
+    document.getElementById('zeitplanGenerieren').addEventListener('click', Zeitplan);
+    
+    
+    //-- Hauptfunktion-------------------------------------------------
+    function Zeitplan() {
+        //-- Aktuelles Datum
+        const startDate = new Date();
+           
+        const startDateMonth = startDate.getMonth()+1;  
+        const startDateYear = startDate.getFullYear(); 
+        const startDateDate = startDate.getDate();    
+    
+        //-- Abgabedatum
+        const endDateValue = document.getElementById('dAbgabe').value;
+        const endDate = new Date(endDateValue);
+        const endDateMonth = endDate.getMonth() + 1;      
+        const endDateDate = endDate.getDate();   
+        
+        //-- Keine Eingabe
+        if (!endDateValue) {
+            alert('Ein Abgabedatum ist fuer den Zeitplan erforderlich');
+            return;
+        }
+
+        //-- Wenn es eine Eingabe gibt, soll die Differenz in Tagen mit (getNumofDays) berechnet werden
+        var differenzTage = getNumOfDays(startDate,endDate);
+
+        if (differenzTage < 21) {  // MIN eingabe 21 Tage (3Wochen)
+            alert('Bitte wähle einen längeren Zeitraum.'+'\n'+'Es werden mindestens 3 Wochen benötigt, um eine Hausarebit zu schreiben.');
+        } else if (differenzTage > 93) { // MAX eingabe 31Tage x 3 Monate
+            alert('Bitte wähle einen kürzeren Zeitraum.'+'\n'+'Der Zeitraum für eine Hausarbeit sollte nicht 3 Monate nicht überschreiten ');
+        } else { 
+            table(startDateMonth, startDateYear, endDateMonth);
+        }
+    }
+    //----------------------------------------------------------------
+
+    //-- Tage zwischen Anfang und Ende ausrechnen---------------------
+   
+    
+      function getNumOfDays(startDate, endDate){
+        let difference = endDate.getTime() - startDate.getTime();
+        return Math.ceil(difference / (1000 * 3600 * 24));
+    }
+        
+    //----------------------------------------------------------------
+
+    //-- Farbe der Zelle anhand der Zeitverteilung--------------------
+    function getColor( day, month, start, end, writingType) {
+        let lengthOfPhases = [];
+      switch (writingType) {
+        case 'Patchworkschreiber':
+          lengthOfPhases = [0.4,0.2,0.2,0.2]
+          break;
+        case 'Versionenschreiber':
+          lengthOfPhases = [0.4,0.2,0.2,0.2]
+          break;
+        case 'Drauflosschreiber':
+          lengthOfPhases = [0.2,0.4,0.2,0.2]
+          break;
+        case 'Planer':
+          lengthOfPhases = [0.2,0.2,0.4,0.2]
+          break;
+        default:
+        lengthOfPhases = [0.25,0.25,0.25,0.25]
+      }
+      let nuOfDaysPerPhase = []
+      nuOfDaysPerPhase.push(Math.floor(getNumOfDays(start, end)* lengthOfPhases[0])) ;
+      nuOfDaysPerPhase.push(nuOfDaysPerPhase[0] + Math.floor(getNumOfDays(start, end)* lengthOfPhases[1]));
+      nuOfDaysPerPhase.push(nuOfDaysPerPhase[1] + Math.floor(getNumOfDays(start, end)* lengthOfPhases[2]))
+      nuOfDaysPerPhase.push(nuOfDaysPerPhase[2] + Math.floor(getNumOfDays(start, end)* lengthOfPhases[3]))
+
+      if(nuOfDaysPerPhase[3] < getNumOfDays(start,end)){
+        nuOfDaysPerPhase[3] += getNumOfDays(start,end) - nuOfDaysPerPhase[3];
+      }
+
+      const currentDate = new Date();             //neues Datum
+      currentDate.setDate(day);                   // set day auf i (aktuell zu bearbeitender Tag)
+      currentDate.setMonth(month);                // set day auf j (aktuell zu bearbeitender Monat)
+      if(currentDate.getDate() !== day){          // 30 auf 01 sprung 
+          currentDate.setDate(day -1);            // bearbeite den vorigen tag
+          currentDate.setMonth(month);            // monat wieder ersetzten z,B, von den 7 zurück auf den 6
+      }
+
+      let endDates = [];                                                 
+      for (let i = 0; i < nuOfDaysPerPhase.length; i++) {
+        let tempDate = new Date();
+        tempDate.setDate(tempDate.getDate() + nuOfDaysPerPhase[i]);
+        endDates.push(tempDate);
+      }
+      if(start < currentDate){
+          if(endDates[0] > currentDate){  
+              return 'red';
+          }else if(endDates[1] > currentDate){
+              return 'yellow';
+          }else if(endDates[2] > currentDate){
+              return 'green';
+          }else if(endDates[3] > currentDate){
+              return  'blue';
+          }
+      }
+      return 'white';
+    }
+    //----------------------------------------------------------------
+
+
+    //-- Tabelle erstellen--------------------------------------------
+    function table( startDateMonth, startDateYear, endDateMonth){
+    
+      let writingType = localStorage.getItem('schreibTyp');
+           
+
+      const endDateValue = document.getElementById('dAbgabe').value;
+        const endDate = new Date(endDateValue);
+     
+        //alert(startDateMonth);
+
+      //-- Arrays der Monatsnamen und Tage der Woche
+      const nameOfMonth = new Array("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+      const nameOfDay = new Array("So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa");
+
+
+      //-- Tabellenvariable soll mit der im HTML id=zeitplan verknüpft sein
+      const table = document.getElementById('zeitplan');
+
+      //-- schreibe Tabellenüberschrift
+      const caption = table.createCaption();
+      caption.innerHTML = 'Zeitplan';
+
+      //-- schreibe Tabellenzeile
+      for (let i = 31; i >= 0; i--) {
+
+        const row = table.insertRow(0);            
+
+        for (let j = startDateMonth; j <= endDateMonth; j++) {
+
+          if (i === 0) {
+            let content = nameOfMonth[j - 1];
+            let cell = row.insertCell();    
+            cell.innerHTML = content;          
+
+            } else {                                
+
+            //-- inhalt der Zellen
+
+            const firstDateOfMonth = new Date(startDateYear, (j - 1), 1);
+            const firstDayOfMonth = firstDateOfMonth.getDay();
+
+            const lastDateOfMonth = new Date(startDateYear, (j - 1), i);
+            const compareMonth = lastDateOfMonth.getMonth() + 1;
+
+ 
+            if (j !== compareMonth) {
+              let content = '';
+              let cell = row.insertCell();
+              cell.innerHTML = content;
+            }else{
+                  let content = i + ' ' + nameOfDay[firstDayOfMonth + (i - 1)];
+                  let cell = row.insertCell();
+                  cell.innerHTML = content;
+
+                  //console.log(Datetoday, endDate);
+                const color = getColor(i, (j - 1), todayDate, endDate, writingType);
+                cell.className = cell.className + color;
+                }
+              }
+            }
+          }
+        }
+      
+  
+  </script>
+</html>

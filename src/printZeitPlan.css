@@ -1,0 +1,95 @@
+@media print {
+    
+    nav {
+        display: none;
+    }
+    #abgabe{
+        display: none;
+    }
+    button{
+        display: none;
+    }
+    table, figure {
+        break-inside: avoid;
+      }
+
+    @page {
+        size: A4 portrait;
+        margin: 0.5cm; 
+     }
+    }
+ 
+table {
+    width: 100%;
+      margin-top: 2em;
+  }
+  
+  table,
+  td,
+  caption {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 0.4em;
+  }
+  
+  caption {
+      background: #666;
+      color: #c4ced3;
+      font-weight: bold;
+      
+  }
+  
+
+  
+  
+  td.red {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      background: #fccec3;
+  }
+  td.yellow{
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      background: #f9f2a3;
+  }
+  td.green {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      background: #d2fcc5;
+  }
+  td.blue {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      background: #b6c6ff;
+  }
+  td.white {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      background: #ffffff;
+  }
+  
+  #check1{
+    background-color: #fccec3;
+    border-radius: 5px;
+    padding: 1%;
+    margin-top: 1%;
+  
+  }
+  #check2{
+    background-color: #f9f2a3;
+    border-radius: 5px;
+    padding: 1%;
+    margin-top: 1%;
+  }
+  #check3{
+    background-color: #d2fcc5;
+    border-radius: 5px;
+    padding: 1%;
+    margin-top: 1%;
+  }
+  #check4{
+    background-color: #b6c6ff;
+    border-radius: 5px;
+    padding: 1%;
+    margin-top: 1%;
+  }

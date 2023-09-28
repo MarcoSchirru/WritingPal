@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="print.css" media="print">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Startseite</title>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a class="active" href="index.html">Start</a></li>
+                <li><a href="test.html">Test</a></li>
+                <li><a href="zeitplan.html">Zeitplan</a></li>
+                <li><a href="tooltips.html">Tooltips</a></li>
+                <li style="float:right"><a href="profil.html">Profil</a></li>
+                <li style="float:right"><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+
+        <div class="div1">
+            <h1> Willkommen bei WritingPal</h1>
+
+            <h4>deinem zuverlässigen Begleiter für das Schreiben von Hausarbeiten!</h4>
+
+            <p>Bist du ein Student, der gerade vor der Herausforderung steht, eine Hausarbeit zu verfassen?<br> 
+                WritingPal ist hier, um dir zu helfen! Mit unserem Quiz kannst du deinen individuellen Lerntyp entdecken und erhältst 
+                wertvolle Einblicke in deine persönlichen Merkmale beim Lernen.<br>
+                Basierend auf deinem Ergebnis stellen wir dir dann einen maßgeschneiderten 
+                Zeitplan zur Verfügung, der dich beim Schreiben deiner Hausarbeit unterstützt.</p>
+                
+            <p>Unser intuitives Interface ermöglicht es dir, deine Hausarbeit Schritt für Schritt zu planen und den Überblick über den 
+                Fortschritt zu behalten.</p>
+                
+            <p>Bereit, dein volles Schreibpotenzial auszuschöpfen? Mach jetzt unser Quiz und entdecke deinen Lerntyp!</p>
+                
+            <p id="linktext"> Hier geht´s zum Test <button id="buttonZumTest">Test beginnen</button></p>
+        </div>
+
+            <!-- script -->
+            <script>
+                let button = document.getElementById("buttonZumTest");
+                button.addEventListener ("click", function() {
+                    window.location.href = 'test.html';});
+            </script>
+            <!-- script ende-->
+    </body>
+</html>

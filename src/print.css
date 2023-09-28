@@ -1,0 +1,34 @@
+@media print {
+    nav {
+        display: none;
+    }
+    button{
+        display: none;
+    }
+    #subbutton{
+        display: none; 
+    }
+    #linktext{
+        display: none;
+    }
+    p {
+        widows:4; 
+        margin:1cm 0 0; 
+        padding:0; 
+    }   
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0.5cm; 
+ }
+
+ html, body{
+    background-color: rgb(255, 255, 255);
+ }
+.div1{
+        box-shadow: none;
+}
+#testDiv{
+    box-shadow: none;
+}

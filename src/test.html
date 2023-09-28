@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="print.css" media="print">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test</title>
+
+		<!-- script -->
+
+	<script>
+
+		function result(){
+
+			var antwort1 = document.querySelector('input[name="frage1"]:checked').value;
+			var antwort2 = document.querySelector('input[name="frage2"]:checked').value;
+			var antwort3 = document.querySelector('input[name="frage3"]:checked').value;
+			const antworten = [antwort1,antwort2,antwort3];
+			var type = "Allrounder";
+			var textType = "\n"+"\n"+"Als Allrounder hast du eine breite Palette an Fähigkeiten und kannst dich flexibel auf unterschiedliche Aufgaben einstellen. Du bist in der Lage, sowohl informative und sachliche Texte zu verfassen als auch kreative und emotionale Inhalte zu kreieren. Du bist in der Lage, dich anzupassen und den gewünschten Ton und Stil zu treffen"+"\n"+"Du kannst sowohl für den professionellen als auch für den persönlichen Bereich schreiben und dich an verschiedene Zielgruppen anpassen. Du bist ein flexibler und vielseitiger Schreiber, der die Fähigkeit hat, eine breite Palette von Texten zu verfassen und zu beeindrucken"+"\n"+"Damit du als Allrounder optimal deinen Schreibprozess angehst, kannst du dir hier einen Zeitplan generieren lassen!";
+
+			let textTypePlaner = "\n"+"\n"+"Du planst gerne vorab im Kopf oder mit Hilfsmitteln. Du erstellst zum Beispiel eine Gliederung, bevor du vollständige Sätze ausformulieren. Das hilft dabei, den Überblick zu behalten und später nah am roten Faden zu schreiben." +"\n"+"Planer lassen Inhalt und Struktur also reifen, bis der richtige Moment zum Ausformulieren gekommen ist."+"\n"+"Manchmal lässt sich die Struktur vorab aber noch nicht festlegen - zum Beispiel bei sehr komplexen Themen, die erst nach und nach Form annehmen können. So etwa bei wissenschaftlichen Arbeiten: Die Gliederung ist dann nur eine vorläufige und flexible, die sich im Verlauf des Schreibens immer wieder verändert."+"\n"+"Um nicht Gefahr zu laufen zu viele Ressourcen in den Planungsprozess zu investieren, kannst du dir jetzt einen individuellen Zeitplan generieren lassen!"
+			let textTypeDrauflosschreiber = "\n"+"\n"+" Strukturen entwickelst du aus dem Prozess des Drauflosschreibens, du denkst sie nicht bereits vorher zu Ende. Das geht in etwa so: Du schreibst ein paar Sätze, die dir als Erstes in den Sinn kommen. Dabei bemerkst du, dass du gerade einen interessanten Gedanken am Wickel hast, und schreibst rasch weiter, um ihn nicht aus dem Sinn zu verlieren. Daraus ergibt sich ein weiterer Gedankengang, den du ebenfalls schreibend verfolgst. Nach einer Weile stellst du zufrieden und mit erhitzten Wangen fest, dass du mit deinem Denkfluss geschrieben hast und auf ganz neue Ideen gekommen bist."+"\n"+"Währenddessen oder danach kommst du erst auf eine Idee, wie dieser Abschnitt in deine Textstruktur passen könnte."+"\n"+"Der Drauflosschreiber stößt meist dann an seine Grenzen, wenn besonders schnell ein durch-strukturierter, prägnanter und damit abgearbeiteter Text entstehen muss. In diesem Fall ist das planende Schreiben die bessere Strategie."+"\n"+"Auch wenn Inhalte und Struktur bereits klar sind, ist Drauflosschreiben weniger sinnvoll. Um mit dem Drauflosschreiben keine Probleme zu haben, kannst du dir hier einen individuellen Schreibplan generieren lassen!"	
+			let textTypeVersionenschreiber = "\n"+"\n"+" Unzählige Schriftsteller, Wissenschaftler und andere Autoren schreiben grundlegend um und neu, bis endlich die Version entsteht, die wir zu lesen bekommen. Denn der Versionenschreiber ist lange nicht zufrieden mit seinem Text: Er sieht die Erstfassung als Steinbruch, nicht als direkte Vorstufe zur abgabereiten Version. Der Steinbruch liefert die Werkstoffe für die späteren Versionen. Entweder schichtet der Versionenschreiber die Steine anders und behaut sie: er schreibt um. Oder er holt neue Steine aus dem Steinbruch: er schreibt neu."+"\n"+"Ein Vorteil des Versionenschreibens kann zugleich sein größter Nachteil sein: Durch die große Textmenge verlierst du leicht den Überblick. Dann wird die Frage: Welche Version ist die beste? zur Belastung."+"\n"+"Wenn es schnell gehen muss, fährst du mit dem Versionenschreiben nicht gut: Es dauert meist deutlich länger als eine gut durchdachte Einzelversion."+"\n"+"Um diese Probleme zu umgehen kannst du dir hier einen individuellen Schreibplan generieren lassen!"
+			let textTypePatchworkschreiber = "\n"+"\n"+" Du schreibst mal hier, mal dort in deinem Text. Möglicherweise unterbrichst du deinen Schreibfluss sogar mittendrin, weil du einen Parallelgedanken weiterverfolgen willst. Du füllst deine Gliederung nach dem Lustprinzip statt Schritt für Schritt: Was du momentan am meisten interessiert, was gerade leicht und wie von selbst geht, dort schreibst du weiter."+"\n"+"So gehst du mit dem Denkfluss und deinen inneren Impulsen mit. Am Ende nähst du deine Textteile zusammen."+"\n"+"Eine Grenze für Patchworkschreiben ist erreicht, wenn du merkst, dass du den Überblick über dein Schreibprojekt verlierst. Manche Patchworkschreiber formulieren insbesondere bei großen Schreibprojekten Inhalte doppelt und dreifach, weil sie längst vergessen haben, dass sie schon an anderer Stelle etwas dazu geschrieben haben."+"\n"+"Um diese Probleme zu umgehen kannst du dir hier einen individuellen Schreibplan generieren lassen!"
+
+			var a = 0;
+			var b = 0;
+			var c = 0;
+			var d = 0;
+
+			for(var i = 0; i <=3 ; i++){
+				if(antworten[i] === "Patchworkschreiber"){
+					a = a+1;
+				}
+				if(antworten[i] === "Versionenschreiber"){
+					b = b+1;
+				}
+				if(antworten[i] === "Drauflosschreiber"){
+					c = c+1;
+				}
+				if(antworten[i] === "Planer"){
+					d = d+1;
+				}
+			}
+			
+			if(a === 3 || a === 2){
+				type = "Patchworkschreiber";
+				textType = textTypePatchworkschreiber;
+			}
+			if(b === 3 || b === 2){
+				type = "Versionenschreiber";
+				textType = textTypeVersionenschreiber;
+			}
+			if(c === 3 || c === 2){
+				type = "Drauflosschreiber";
+				textType = textTypeDrauflosschreiber;
+			}
+			if(d === 3 || d === 2){
+				type = "Planer";
+				textType = textTypePlaner;
+			}
+		
+			//in local sotagre schreiben ("WertNAme", "Wert")
+			localStorage.setItem("schreibTyp", type);
+			
+			const text = "Du bist ein "+type+"!"+textType+"\n"+"\n";
+
+			const testdiv = document.getElementById("questionDiv");
+			testdiv.removeChild(testdiv.firstElementChild);
+
+			const para = document.createElement("p");
+			para.innerText = text;
+			document.getElementById("testDiv").appendChild(para);
+
+			const button = document.createElement("button");
+			button.innerText = "Zeitplan erstellen";
+			button.addEventListener ("click", function() {
+				window.location.href = 'zeitplan.html';});
+
+			document.getElementById("testDiv").appendChild(button);
+}
+		</script>
+		<!-- ende script -->
+    </head>
+
+	<body>
+	<nav>
+		<ul>
+			<li><a href="index.html">Start</a></li>
+			<li><a class="active" href="test.html">Test</a></li>
+			<li><a href="zeitplan.html">Zeitplan</a></li>
+			<li><a href="tooltips.html">Tooltips</a></li>
+			<li style="float:right"><a href="profil.html">Profil</a></li>
+			<li style="float:right"><a href="login.html">Login</a></li>
+		</ul>
+	</nav>
+
+    	<div id="testDiv">
+			
+			<div id="questionDiv">
+			
+			<form> <!-- Test From -->
+			<h1>Schreibtyp Test</h1>
+			<p>Welche Aussage beschreibt deinen Schreibstil am besten?</p>
+		
+			<input type="radio" name="frage1" id="frageA1" value="Patchworkschreiber" required>
+			<label for="frageA1">Ich schreibe gerne in kleinen Einheiten, mit dem Umfang eines Gedankenzuges.</label><br>
+
+			<input type="radio" name="frage1" id="frageB1" value="Versionenschreiber" required>
+			<label for="frageB1">Ich schreibe meine Texte ein- oder mehrmals ganz neu.</label><br>
+
+			<input type="radio" name="frage1" id="frageC1" value="Drauflosschreiber" required>
+			<label for="frageC1">Ich schreibe (fast) so wie ich denke.</label><br>
+
+			<input type="radio" name="frage1" id="frageD1" value="Planer" required>
+		<label for="frageD1">Ich schreibe am sichersten, wenn ich vor dem Schreiben gründlich geplant habe</label><br><br><br>
+
+			<!---->
+
+			<p>Welche Aussage beschreibt am besten, welche Rolle ihre Gliederung im Schreibprozess spielt?</p>
+
+			<input type="radio" name="frage2" id="frageA2" value="Patchworkschreiber" required>
+			<label for="frageA2">Ich springe beim Schreiben gerne von einem Gliederungspunkt zum anderen.</label><br>
+
+			<input type="radio" name="frage2" id="frageB2" value="Drauflosschreiber" required>
+			<label for="frageB2">Selbst wenn ich eine Gliederung habe, an der ich mich orientieren könnte, tue ich mich beim Ausformulieren schwer damit diese einzuhalten.</label><br>
+		
+			<input type="radio" name="frage2" id="frageC2" value="Planer" required>
+			<label for="frageC2">Ich erstelle meine Gliederung, bevor ich mit dem Ausformulieren meiner Texte beginne.</label><br>
+
+			<input type="radio" name="frage2" id="frageD2" value="Versionenschreiber" required>
+			<label for="frageD2">Ich weiß beim Rohtext schon, dass sich diese Erstfassung noch stark verändern wird.</label><br><br><br>
+
+			<!---->
+
+			<p>Welche Aussage beschreibt deinen Arbeitsstil am besten?</p>
+
+			<input type="radio" name="frage3" id="frageA3" value="Planer" required>
+			<label for="frageA3">Ich arbeite meine Aufgaben gerne Schritt für Schritt ab.</label><br>
+
+			<input type="radio" name="frage3" id="frageB3" value="Drauflosschreiber" required>
+			<label for="frageB3">Ich habe einen intuitiven Arbeitsstil.</label><br>
+
+			<input type="radio" name="frage3" id="frageC3" value="Versionenschreiber" required>
+			<label for="frageC3">Ich habe hohe Ansprüche an mich, meine Leistungen und meine Arbeitsergebnisse.</label><br>
+
+			<input type="radio" name="frage3" id="frageD3" value="Patchworkschreiber" required>
+			<label for="frageD3">Mir fallen beim Arbeiten viele Dinge aus anderen Bereichen ein.</label><br><br><br>
+			
+
+			<!---->
+			<input type="submit" id="subbutton" name="submit" value="Fertig" onClick="result()">
+			<!---->
+			</form> <!-- Test Form Ende-->
+		</div>
+		</div>
+	</body>
+</html>
